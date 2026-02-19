@@ -6,28 +6,14 @@ A role-based timetable and announcement management system for educational instit
 
 ## 📌 Features
 
-- User authentication (Student / Teacher roles)
+- User authentication (Admin / General User roles)
 - Role-based access control
 - Dashboard view
 - Announcement management  
   - Students can view  
   - Teachers can create, edit, delete  
-
-### Future Scope
 - Constraint-based timetable generation
-- Section-wise, Teacher-wise views
-- Free time slot analysis
-
----
-
-## 🏗️ Project Structure
-
-gvp_time_table/
-│
-├── server/      # Express backend API
-├── client/      # React frontend (SPA)
-├── .gitignore
-└── README.md
+- Section-wise, Teacher-wise time table views
 
 ---
 
