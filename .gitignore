@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+
+# Build folders
+dist/
+build/
+
+# Vite
+client/dist/
+
+# Coverage
+coverage/
+
+# Optional IDE files
+.vscode/
