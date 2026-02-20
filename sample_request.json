@@ -1,0 +1,26 @@
+{
+    "meta":{
+        "semester": 6,
+        "department": "CSE",
+        "sections": 4,
+        "slots_per_day": 9,
+        "lunch_slot": 4,
+        "start_timestamp": "8:40:00",
+        "end_timestamp": "5:00:00",
+        "days": ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat"],
+        "weakly_lab_slots": 3, 
+        "is_lab_continue": true,
+        "weakly_core_slots": 4,
+        "weakly_elective_slots": 4,
+        "is_elective_synchronized": true
+    },
+
+    "courses":{
+        "labs": ["ESD LAB", "CNS LAB", "ML LAB", "OOSE LAB"],
+        "core": ["ML", "CNS", "OOSE"],
+        "open": ["CC", "STT"],
+        "professional": ["DS", "BCT"]
+    }
+
+
+}
