@@ -12,7 +12,9 @@
         "is_lab_continue": true,
         "weakly_core_slots": 4,
         "weakly_elective_slots": 4,
-        "is_elective_synchronized": true
+        "is_elective_synchronized": true,
+        "student_activities":true,
+        "student_activities_slots":9
     },
 
     "courses":{
@@ -20,7 +22,29 @@
         "core": ["ML", "CNS", "OOSE"],
         "open": ["CC", "STT"],
         "professional": ["DS", "BCT"]
+    },
+
+    "teachers": {
+        "RA": ["OOSE","OOSE LAB"],
+        "Dr.GSR":["CNS","CNS LAB"],
+        "VGA":["ML","ML LAB"],
+        "KSR":["CC","DS","OOSE LAB"],
+        "KS":["ML LAB"],
+        "DS":["STT","OOSE LAB"],
+        "BP":["CC"],
+        "Dr.PMR":["BCT"],
+        "KSI":["DS"],
+        "BDS":["ESD LAB"],
+        "RSM":["ESD LAB"],
+        "VSSP":["CNS LAB","DS"],
+        "DI":["OOSE LAB","OOSE"],
+        "DR.LG":["ESD LAB"],
+        "YS":["ML","ML LAB"],
+        "DR.NS":["CNS","CNS LAB"],
+        "PS": ["CNS LAB"],
+        "DR.KR": ["ML LAB"],
+        "MHL": ["ESD LAB"]
+
     }
-
-
+    
 }
