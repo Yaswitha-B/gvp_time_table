@@ -14,7 +14,8 @@
         "weakly_elective_slots": 4,
         "is_elective_synchronized": true,
         "student_activities":true,
-        "student_activities_slots":9
+        "student_activities_slots":9,
+        "term_project":3
     },
 
     "courses":{
