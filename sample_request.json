@@ -17,9 +17,15 @@
     "time_blocks": {
 
         "LUNCH": {
-            "days": ["Mon","Tue","Wed","Thur","Fri","Sat"],
+            "days": ["Mon","Tue","Wed","Thur","Fri"],
             "sections": ["1", "2", "3", "4"],
             "slot": [4]
+        },
+
+        "VALUE_ADDED":{
+            "days": ["Sat"],
+            "sections": ["1", "2", "3", "4"],
+            "slot": [1, 2, 3, 4, 5, 6, 7, 8, 9]
         }
     },
 
@@ -81,14 +87,9 @@
             "is_continuous": false,
             "is_synchronized": true,
             "courses": {
-                "CC": {
-                    "teachers": ["KSR", "BP"],
-                    "required_teachers": 1,
-                    "room_type": "classroom"
-                },
-                "STT": {
-                    "teachers": ["DS"],
-                    "required_teachers": 1,
+                "CC/STT": {
+                    "teachers": ["KSR", "BP", "DS"],
+                    "required_teachers": 2,
                     "room_type": "classroom"
                 }
             }
@@ -99,14 +100,9 @@
             "is_continuous": false,
             "is_synchronized": true,
             "courses": {
-                "DS": {
-                    "teachers": ["KSR", "KSI", "VSSP"],
-                    "required_teachers": 1,
-                    "room_type": "classroom"
-                },
-                "BCT": {
-                    "teachers": ["Dr.PMR"],
-                    "required_teachers": 1,
+                "DS/BCT": {
+                    "teachers": ["KSI", "VSSP", "Dr.PMR"],
+                    "required_teachers": 3,
                     "room_type": "classroom"
                 }
             }
@@ -122,7 +118,7 @@
                     "required_teachers": 0,
                     "room_type": "classroom"
                 },
-                "STUDY": {
+                "SPORTS": {
                     "teachers": [],
                     "required_teachers": 0,
                     "room_type": "classroom"
@@ -136,19 +132,6 @@
             "is_synchronized": false,
             "courses": {
                 "TERM_PROJECT": {
-                    "teachers": [],
-                    "required_teachers": 0,
-                    "room_type": "classroom"
-                }
-            }
-        },
-
-        "value_added": {
-            "slots": 9,
-            "is_continuous": true,
-            "is_synchronized": true,
-            "courses": {
-                "VALUE_ADDED": {
                     "teachers": [],
                     "required_teachers": 0,
                     "room_type": "classroom"
