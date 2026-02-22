@@ -1,5 +1,4 @@
 // ── Init State ───────────────────────────────────────────────
-
 function initState(request) {
   const { sections, days, slots_per_day } = request.meta
   const { time_blocks } = request
@@ -28,7 +27,6 @@ function initState(request) {
 }
 
 // ── Priority Queue ───────────────────────────────────────────
-
 function buildPriorityQueue(request) {
   const sections = Object.keys(request.meta.sections)
 
@@ -87,7 +85,6 @@ function buildPriorityQueue(request) {
 }
 
 // ── Constraint Checkers ──────────────────────────────────────
-
 function isSlotBlocked(timetable, section, day, slot) {
   return timetable[section][day][slot] !== null
 }
@@ -105,12 +102,14 @@ function getAvailableTeachers(teacherPool, requiredCount, teacherBusy, day, slot
   return available.slice(0, requiredCount)
 }
 
-function findFreeRoom(roomBusy, rooms, roomType, day, slot) {
-  const key = `${day}-${slot}`
-  const match = Object.entries(rooms).find(([roomId, roomInfo]) =>
-    roomInfo.type === roomType && !roomBusy[roomId]?.[key]
+function findFreeRoom(roomBusy, rooms, roomType, day, slot, sectionIndex) {
+  // Assign a different room per section deterministically
+  const allRooms = Object.entries(rooms).filter(([roomId, roomInfo]) =>
+    roomInfo.type === roomType && !roomBusy[roomId]?.[`${day}-${slot}`]
   )
-  return match ? match[0] : null
+  if (!allRooms.length) return null
+  // Use sectionIndex to pick a different room for each section
+  return allRooms[sectionIndex % allRooms.length][0]
 }
 
 function canPlaceBlock(task, state, request, day, startSlot) {
@@ -131,17 +130,14 @@ function canPlaceBlock(task, state, request, day, startSlot) {
     if (teachers === null) return false
   }
 
-  const room = findFreeRoom(state.roomBusy, request.room, task.roomType, day, startSlot)
+  const room = findFreeRoom(state.roomBusy, request.room, task.roomType, day, startSlot, 0)
   if (!room) return false
 
   return true
 }
 
 // ── Assign ───────────────────────────────────────────────────
-
 function assignTask(task, state, request, day, startSlot) {
-  const room = findFreeRoom(state.roomBusy, request.room, task.roomType, day, startSlot)
-
   const slotsToFill = task.isContinuous
     ? Array.from({ length: task.slots }, (_, i) => startSlot + i)
     : [startSlot]
@@ -150,31 +146,34 @@ function assignTask(task, state, request, day, startSlot) {
     task.teacherPool, task.requiredTeachers, state.teacherBusy, day, startSlot
   )
 
-  for (const slot of slotsToFill) {
-    const key = `${day}-${slot}`
+  for (let idx = 0; idx < task.sections.length; idx++) {
+    const section = task.sections[idx]
+    const roomForSection = findFreeRoom(state.roomBusy, request.room, task.roomType, day, startSlot, idx)
 
-    for (const section of task.sections) {
+    for (const slot of slotsToFill) {
+      const key = `${day}-${slot}`
       state.timetable[section][day][slot] = {
         course: task.name,
         teachers: teachers || [],
-        room
+        room: roomForSection
+      }
+
+      // Mark room as busy
+      if (!state.roomBusy[roomForSection]) state.roomBusy[roomForSection] = {}
+      state.roomBusy[roomForSection][key] = true
+
+      // Mark teacher as busy
+      if (teachers) {
+        for (const teacher of teachers) {
+          if (!state.teacherBusy[teacher]) state.teacherBusy[teacher] = {}
+          state.teacherBusy[teacher][key] = true
+        }
       }
     }
-
-    if (teachers) {
-      for (const teacher of teachers) {
-        if (!state.teacherBusy[teacher]) state.teacherBusy[teacher] = {}
-        state.teacherBusy[teacher][key] = true
-      }
-    }
-
-    if (!state.roomBusy[room]) state.roomBusy[room] = {}
-    state.roomBusy[room][key] = true
   }
 }
 
-// ── Value Added: fills entire Saturday ───────────────────────
-
+// ── Value Added ──────────────────────────────────────────────
 function tryPlaceValueAdded(task, state, request) {
   const { slots_per_day } = request.meta
   const day = "Sat"
@@ -192,19 +191,16 @@ function tryPlaceValueAdded(task, state, request) {
 }
 
 // ── Greedy Placement ─────────────────────────────────────────
-
 function tryPlace(task, state, request) {
   const { days, slots_per_day } = request.meta
 
-  if (task.name === "VALUE_ADDED") {
-    return tryPlaceValueAdded(task, state, request)
-  }
+  if (task.name === "VALUE_ADDED") return tryPlaceValueAdded(task, state, request)
 
   const timesToPlace = task.isContinuous ? 1 : task.slots
   let placed = 0
 
   for (const day of days) {
-    if (day === "Sat") continue  // Saturday is reserved for VALUE_ADDED
+    if (day === "Sat") continue
     if (placed >= timesToPlace) break
     for (let slot = 0; slot < slots_per_day; slot++) {
       if (canPlaceBlock(task, state, request, day, slot)) {
@@ -219,7 +215,6 @@ function tryPlace(task, state, request) {
 }
 
 // ── Main Generator ───────────────────────────────────────────
-
 function generateTimetable(request) {
   const state = initState(request)
   const queue = buildPriorityQueue(request)
