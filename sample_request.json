@@ -1,5 +1,5 @@
 {
-    "meta":{
+    "meta": {
         "semester": 6,
         "department": "CSE",
         "sections": {
@@ -9,10 +9,18 @@
             "4": 60
         },
         "slots_per_day": 9,
-        "lunch_slot": 4,
         "start_timestamp": "8:40:00",
         "end_timestamp": "5:00:00",
         "days": ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+    },
+
+    "time_blocks": {
+
+        "LUNCH": {
+            "days": ["Mon","Tue","Wed","Thur","Fri","Sat"],
+            "sections": ["1", "2", "3", "4"],
+            "slot": [4]
+        }
     },
 
     "course_type": {
@@ -24,18 +32,22 @@
             "courses": {
                 "ESD LAB": {
                     "teachers": ["BDS", "RSM", "DR.LG", "MHL"],
-                    "room_type": "classroom"
+                    "required_teachers": 2,
+                    "room_type": "lab"
                 },
                 "CNS LAB": {
                     "teachers": ["Dr.GSR", "DR.NS", "PS", "VSSP"],
+                    "required_teachers": 2,
                     "room_type": "lab"
                 },
                 "ML LAB": {
                     "teachers": ["VGA", "KS", "YS", "DR.KR"],
+                    "required_teachers": 2,
                     "room_type": "lab"
                 },
                 "OOSE LAB": {
                     "teachers": ["RA", "KSR", "DS", "DI"],
+                    "required_teachers": 2,
                     "room_type": "lab"
                 }
             }
@@ -48,14 +60,17 @@
             "courses": {
                 "ML": {
                     "teachers": ["VGA", "YS"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 },
                 "CNS": {
                     "teachers": ["Dr.GSR", "DR.NS"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 },
                 "OOSE": {
                     "teachers": ["RA", "DI"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 }
             }
@@ -68,10 +83,12 @@
             "courses": {
                 "CC": {
                     "teachers": ["KSR", "BP"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 },
                 "STT": {
                     "teachers": ["DS"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 }
             }
@@ -84,26 +101,30 @@
             "courses": {
                 "DS": {
                     "teachers": ["KSR", "KSI", "VSSP"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 },
                 "BCT": {
                     "teachers": ["Dr.PMR"],
+                    "required_teachers": 1,
                     "room_type": "classroom"
                 }
             }
         },
 
         "student_activities": {
-            "slots": null,
+            "slots": 1,
             "is_continuous": false,
             "is_synchronized": false,
             "courses": {
                 "LIBRARY": {
                     "teachers": [],
+                    "required_teachers": 0,
                     "room_type": "classroom"
                 },
                 "STUDY": {
                     "teachers": [],
+                    "required_teachers": 0,
                     "room_type": "classroom"
                 }
             }
@@ -116,6 +137,7 @@
             "courses": {
                 "TERM_PROJECT": {
                     "teachers": [],
+                    "required_teachers": 0,
                     "room_type": "classroom"
                 }
             }
@@ -128,6 +150,7 @@
             "courses": {
                 "VALUE_ADDED": {
                     "teachers": [],
+                    "required_teachers": 0,
                     "room_type": "classroom"
                 }
             }
