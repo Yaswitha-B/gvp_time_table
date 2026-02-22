@@ -1,0 +1,197 @@
+{
+    "meta": {
+        "semester": 6,
+        "department": "CSE",
+        "sections": {
+            "1": 60,
+            "2": 60,
+            "3": 60,
+            "4": 60
+        },
+        "slots_per_day": 9,
+        "start_timestamp": "8:40:00",
+        "end_timestamp": "5:00:00",
+        "days": ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+    },
+
+    "time_blocks": {
+        "LUNCH": {
+            "days": ["Mon","Tue","Wed","Thur","Fri"],
+            "sections": ["1", "2", "3", "4"],
+            "slot": [4]
+        }
+    },
+
+    "course_type": {
+
+        "lab": {
+            "slots": 3,
+            "is_continuous": true,
+            "is_synchronized": false,
+            "courses": {
+                "ESD LAB": {
+                    "teachers": ["BDS", "RSM", "DR.LG", "MHL"],
+                    "required_teachers": 2,
+                    "room_type": "lab"
+                },
+                "CNS LAB": {
+                    "teachers": ["Dr.GSR", "DR.NS", "PS", "VSSP"],
+                    "required_teachers": 2,
+                    "room_type": "lab"
+                },
+                "ML LAB": {
+                    "teachers": ["VGA", "KS", "YS", "DR.KR"],
+                    "required_teachers": 2,
+                    "room_type": "lab"
+                },
+                "OOSE LAB": {
+                    "teachers": ["RA", "KSR", "DS", "DI"],
+                    "required_teachers": 2,
+                    "room_type": "lab"
+                }
+            }
+        },
+
+        "core": {
+            "slots": 3,
+            "is_continuous": false,
+            "is_synchronized": false,
+            "courses": {
+                "ML": {
+                    "teachers": ["VGA", "YS"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                },
+                "CNS": {
+                    "teachers": ["Dr.GSR", "DR.NS"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                },
+                "OOSE": {
+                    "teachers": ["RA", "DI"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                }
+            }
+        },
+
+        "open_elective": {
+            "slots": 3,
+            "is_continuous": false,
+            "is_synchronized": true,
+            "courses": {
+                "CC": {
+                    "teachers": ["KSR", "BP"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                },
+                "STT": {
+                    "teachers": ["DS"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                }
+            }
+        },
+
+        "professional_elective": {
+            "slots": 3,
+            "is_continuous": false,
+            "is_synchronized": true,
+            "courses": {
+                "DS": {
+                    "teachers": ["KSR", "KSI", "VSSP"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                },
+                "BCT": {
+                    "teachers": ["Dr.PMR"],
+                    "required_teachers": 1,
+                    "room_type": "classroom"
+                }
+            }
+        },
+
+        "student_activities": {
+            "slots": 1,
+            "is_continuous": false,
+            "is_synchronized": false,
+            "courses": {
+                "LIBRARY": {
+                    "teachers": [],
+                    "required_teachers": 0,
+                    "room_type": "classroom"
+                },
+                "STUDY": {
+                    "teachers": [],
+                    "required_teachers": 0,
+                    "room_type": "classroom"
+                }
+            }
+        },
+
+        "term_project": {
+            "slots": 2,
+            "is_continuous": false,
+            "is_synchronized": false,
+            "courses": {
+                "TERM_PROJECT": {
+                    "teachers": [],
+                    "required_teachers": 0,
+                    "room_type": "classroom"
+                }
+            }
+        },
+
+        "value_added": {
+            "slots": 9,
+            "is_continuous": true,
+            "is_synchronized": true,
+            "courses": {
+                "VALUE_ADDED": {
+                    "teachers": [],
+                    "required_teachers": 0,
+                    "room_type": "classroom"
+                }
+            }
+        }
+    },
+
+    "room": {
+        "201":{
+            "type": "classroom",
+            "capacity": 100
+        },
+        "202":{
+            "type": "classroom",
+            "capacity": 100
+        },
+        "203":{
+            "type": "classroom",
+            "capacity": 100
+        },
+        "204":{
+            "type": "classroom",
+            "capacity": 100
+        },
+        "CSE_LAB1":{
+            "type": "lab",
+            "capacity": 30
+        },
+        "CSE_LAB2":{
+            "type": "lab",
+            "capacity": 30
+        },
+        "CSE_LAB3":{
+            "type": "lab",
+            "capacity": 30
+        },
+        "CSE_LAB4":{
+            "type": "lab",
+            "capacity": 30
+        },
+        "PROJECT_LAB":{
+            "type": "lab",
+            "capacity": 60
+        }
+    }
+}
